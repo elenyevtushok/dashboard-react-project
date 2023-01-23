@@ -15,31 +15,32 @@ function App() {
 		backgroundImage: `url(${backgroundImage.imageUrl})`,
 		height: '100vh',
 		margin: '-8px',
-		fontSize: '50px',
+		fontSize: '40px',
 		backgroundSize: 'cover',
 		backgroundRepeat: 'no-repeat',
 	}
 	useEffect( () => {
-		addImage();
-	}, []
+		fetch('https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature')
+			.then(res => res.json())
+			.then(data => {
+				setBackgroundImage({ imageUrl: data.urls.regular, imageAuthor: data.user.name })
+			})
+		.catch(err => {
+			setBackgroundImage({ imageUrl: "https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwxNDI0NzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzQ0NjM2MTE&ixlib=rb-4.0.3&q=80", imageAuthor: "Mark Harpur" })
+		})
+	},[]
 	)
-	async function addImage() {
-		const res = await fetch('https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature')
-		const data = await res.json()
-		setBackgroundImage({imageUrl: data.urls.regular, imageAuthor: data.user.name})
-		console.log(data)
-		console.log(backgroundImage)
-	}
+	
 	
 	return (
 		<main className="App" style = {myStyle}>
 			<div className='crypto-and-weather'>
-				<p>
+				<div>
 				<Crypto />
-				</p>
-				<p>
+				</div>
+				<div>
 				<Weather />
-				</p>
+				</div>
 			</div>
 			<h1 className='time'>
 				<Time />

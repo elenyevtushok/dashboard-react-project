@@ -18,6 +18,26 @@ body{
 	display: flex;
 	justify-content: space-between;
 }
+.crypto{
+	display: flex;
+	flex-direction: column;
+	font-size: 20px;
+	color: #ffffff;
+	padding: 10px;
+	margin: 10px;
+	background: rgba(181, 210, 181, 0.6);
+	border-radius: 5px
+}
+.crypto >p {
+	margin: 0;
+}
+.crypto-top{
+	display: flex;
+	align-items: center;
+}
+.crypto-top > span{
+	margin-left: 10px;
+}
 .time{
 	text-align: center;
 }
