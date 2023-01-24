@@ -9,7 +9,8 @@ function App() {
 
 	const [backgroundImage, setBackgroundImage] = useState({
 		imageUrl: "",
-		imageAuthor: ""
+		imageAuthor: "",
+		imagePlace: ""
 	})
 	const myStyle = {
 		backgroundImage: `url(${backgroundImage.imageUrl})`,
@@ -20,10 +21,11 @@ function App() {
 		backgroundRepeat: 'no-repeat',
 	}
 	useEffect( () => {
-		fetch('https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature')
+		fetch('https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=beach')
 			.then(res => res.json())
 			.then(data => {
-				setBackgroundImage({ imageUrl: data.urls.regular, imageAuthor: data.user.name })
+				setBackgroundImage({ imageUrl: data.urls.full, imageAuthor: data.user.name, imagePlace: data.location.name })
+				console.log(data)
 			})
 		.catch(err => {
 			setBackgroundImage({ imageUrl: "https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwxNDI0NzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzQ0NjM2MTE&ixlib=rb-4.0.3&q=80", imageAuthor: "Mark Harpur" })
@@ -45,7 +47,10 @@ function App() {
 			<h1 className='time'>
 				<Time />
 			</h1>
-			<div className='author'>By: {backgroundImage.imageAuthor}</div>
+			<div className='image-details'>
+			<div>By: {backgroundImage.imageAuthor}</div>
+			{backgroundImage.imagePlace && <div>{backgroundImage.imagePlace}</div>}
+			</div>
 		</main>
 	)
 }
