@@ -42,7 +42,7 @@ body{
 .time{
 	text-align: center;
 	font-weight: 900;
-	font-size: 90px;
+	font-size: 100px;
 }
 .date{
 	font-size: 24px;
@@ -65,10 +65,65 @@ body{
 	font-weight: 500;
 	margin-top: -15px;
 }
+.details-recipe{
+	display: flex;
+	justify-content: space-between;
+}
 .image-details{
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
+	justify-content: end;
 	font-size: 18px;
 	margin: 20px;
+}
+.recipe{
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	margin: 10px;
+	font-size: 24px;
+}
+.recipe-link{
+	text-decoration: none;
+	color: inherit;
+	text-align: center;
+}
+.recipe-link:hover{
+	cursor: pointer;
+	text-decoration: underline;
+	color: green;
+	font-weight: 700;
+}
+.recipe-image{
+	border-radius: 10px;
+	margin: 10px;
+	height: 200px;
+	width: 200px;
+	transition: .3s ease-in-out;
+}
+
+.recipe-image:hover{
+	opacity: 1;
+		-webkit-animation: flash 1.5s;
+		animation: flash 1.5s;
+		cursor: pointer;
+}
+@-webkit-keyframes flash {
+	0% {
+		opacity: .4;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes flash {
+	0% {
+		opacity: .4;
+	}
+
+	100% {
+		opacity: 1;
+	}
 }
